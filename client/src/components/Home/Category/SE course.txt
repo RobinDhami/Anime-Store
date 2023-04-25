@@ -1,0 +1,4 @@
+consider a software using semi detached with 30kloc calculate effort ,duration,person.
+consider a software with 30kloc which is an embeded software with critical area hence reliability is high. calculate estimation of effort time and person.
+
+  

@@ -1,0 +1,1 @@
+Callback : When you nest a function inside another function as an argument, that's called a callback.
