@@ -56,7 +56,7 @@ const Search = ({ setSearchModal }) => {
                                     src={
                                         process.env
                                             .REACT_APP_STRIPE_APP_DEV_URL +
-                                        item.attributes.image.data[0].attributes
+                                        item.attributes.img.data[0].attributes
                                             .url 
                                     } alt=""
                                 />
@@ -66,7 +66,7 @@ const Search = ({ setSearchModal }) => {
                                     {item.attributes.title}
                                 </span>
                                 <span className="desc">
-                                    {item.attributes.description}
+                                    {item.attributes.desc}
                                 </span>
                             </div>
                         </div>
