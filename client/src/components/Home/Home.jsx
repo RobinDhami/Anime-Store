@@ -1,44 +1,28 @@
-import React, { useEffect, useContext } from "react";
-import "./Home.scss";
-import Banner from "./Banner/Banner";
-import Category from "./Category/Category";
-import Products from "../Products/Products";
-import { fetchDataFromApi } from "../../utils/api";
-import { Context } from "../../utils/context";
+import { useNavigate } from "react-router-dom";
+import "./Category.scss";
 
-const Home = () => {
-    const { products, setProducts, categories, setCategories } =
-        useContext(Context);
-    useEffect(() => {
-        getProducts();
-        getCategories();
-    }, []);
-
-    const getProducts = () => {
-        fetchDataFromApi("/api/products?populate=*").then((res) => {
-            setProducts(res);
-        });
-    };
-    const getCategories = () => {
-        fetchDataFromApi("/api/categories?populate=*").then((res) => {
-            setCategories(res);
-        });
-    };
-
+const Category = ({ categories }) => {
+    const navigate = useNavigate();
     return (
-        <div>
-            <Banner />
-            <div className="main-content">
-                <div className="layout">
-                    <Category categories={categories} />
-                    <Products
-                        headingText="Popular Products"
-                        products={products}
-                    />
-                </div>
+        <div className="shop-by-category">
+            <div className="categories">
+                {categories?.data?.map((item) => (
+                    <div
+                        key={item.id}
+                        className="category"
+                        onClick={() => navigate(`/category/${item.id}`)}
+                    >
+                        <img
+                            src={
+                                process.env.REACT_APP_STRIPE_APP_DEV_URL +
+                                item.attributes.img.data.attributes.url
+                            }
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );
 };
 
-export default Home;
+export default Category;
